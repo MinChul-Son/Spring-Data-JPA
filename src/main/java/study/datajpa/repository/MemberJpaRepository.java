@@ -41,4 +41,11 @@ public class MemberJpaRepository {
         return em.createQuery("select count(m) from Member m", Long.class) // count는 Long타입으로 반환됨
                 .getSingleResult(); // 단건 조회
     }
+
+    public List<Member> findByUsernameAndAgeGreaterThen(String username, int age) {
+        return em.createQuery("select m from Member m where m.username = :username and m.age > :age")
+                .setParameter("username", username)
+                .setParameter("age", age)
+                .getResultList();
+    }
 }
