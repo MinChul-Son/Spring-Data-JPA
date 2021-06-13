@@ -1,14 +1,11 @@
 package study.datajpa.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Getter
+@Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // JPA 기본 스펙으로 기본 생성자가 필요함(protected로)
 @ToString(of = {"id", "username", "age"}) // 연관 관계인 team은 출력하면 안됨. 무한 루프의 가능성이 존재함.
 @NamedQuery(
