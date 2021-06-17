@@ -64,4 +64,7 @@ public interface MemberRepository extends JpaRepository<Member, Long>, MemberRep
 
     @Lock(LockModeType.PESSIMISTIC_WRITE) // LockModeType 은 JPA 기능, 이를 편하게 사용하도록 @Lock 애노테이션을 스프링 데이터 jpa가 제공
     List<Member> findLockByUsername(String username);
+
+//    List<UsernameOnlyDto> findProjectionsByUsername(@Param("username") String username);
+    <T> List<T> findProjectionsByUsername(@Param("username") String username, Class<T> type);
 }
